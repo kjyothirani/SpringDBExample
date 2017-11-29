@@ -9,6 +9,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,7 +36,7 @@ public class AcademicWikiController {
 	}
 	
 	@RequestMapping(value = "/classroom/submitUpload", method = RequestMethod.POST)
-	public ModelAndView  submitUpload(@ModelAttribute AcademicWikiForm request) {
+	public Success  submitUpload(@ModelAttribute AcademicWikiForm request) {
 		Success response = new Success();
 		try {
 			Date date = new Date();
@@ -57,9 +58,16 @@ public class AcademicWikiController {
 		mav.addObject("academicList", service.getWikiList());
 		
 		mav.addObject("message", "yes");
-		return mav;
+		return response;
 	}
 	
+	
+	public Success  delete(@RequestParam("id") Long id) {
+		service.delete(id);
+		Success response = new Success();
+		response.setSuccess(true);
+		return response;
+	}
 	
 
 }

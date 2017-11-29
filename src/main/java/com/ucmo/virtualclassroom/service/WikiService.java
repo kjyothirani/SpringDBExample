@@ -9,5 +9,7 @@ public interface WikiService {
 	public boolean saveWiki(AcademicWikiModel model);
 	
 	public List<AcademicWikiModel> getWikiList( );
+	
+	public boolean delete(Long model);
 
 }

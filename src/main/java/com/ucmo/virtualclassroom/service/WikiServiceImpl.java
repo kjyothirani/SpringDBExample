@@ -30,4 +30,10 @@ public class WikiServiceImpl implements WikiService {
 				return null;
 	}
 
+	@Override
+	public boolean delete(Long model) {
+		repository.delete(model);
+		return true;
+	}
+
 }
